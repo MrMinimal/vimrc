@@ -1,4 +1,4 @@
-" Toms vimrc
+" Tomsrvimrc
 
 " MISC
 set title                " set name of window to the filename
@@ -41,6 +41,10 @@ set expandtab		" Convert tabs to spaces
 set smarttab
 
 " KEYMAPPING
+let mapleader = "\<Space>"
+
+nnoremap <leader>r :source $MYVIMRC<CR>
+
 nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
