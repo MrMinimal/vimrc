@@ -1,9 +1,44 @@
 " Tomsrvimrc
 
+" ========================= VUNDLE ========================= 
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'easymotion/vim-easymotion' 
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+
+" ========================= VUNDLE END ========================= 
+
 " MISC
 set title                " set name of window to the filename
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
+
+" Enable syntax highlighting
+syntax on
+set background=dark
+colorscheme solarized
 
 " Spell checking
 set spell spelllang=en
@@ -13,9 +48,6 @@ set nocompatible
 
 " Determine file type by extension
 filetype indent plugin on
-
-" Enable syntax highlighting
-syntax on
 
 " Case insensitive search except when using capital letters
 set ignorecase
@@ -43,12 +75,15 @@ set smarttab
 " KEYMAPPING
 let mapleader = "\<Space>"
 
-nnoremap <leader>r :source $MYVIMRC<CR>
+nnoremap <leader>vr :source $MYVIMRC<CR>
+nnoremap <leader>ve :e $MYVIMRC<CR>
 
 nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
+
+nnoremap <leader>: q:
 
 " Set < and > to multiples of shiftwidth
 set shiftround
@@ -66,3 +101,19 @@ nnoremap <esc>^[ <esc>^[
 
 " Always display where the cursor is in the bottom right
 set ruler
+
+" Highlight the line the cursor is at
+set cursorline
+
+" Stop vim from using sound
+set noerrorbells
+set visualbell
+
+" Show visual help when using tab complete in command line
+set wildmenu
+
+" Show commands in the bottom right corner
+set showcmd
+
+" Prevent vim from redrawing too often 
+set lazyredraw
