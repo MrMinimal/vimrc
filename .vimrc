@@ -13,6 +13,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'easymotion/vim-easymotion' 
 Plugin 'ctrlpvim/ctrlp.vim'
 
@@ -29,6 +30,9 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
 " ========================= VUNDLE END ========================= 
+
+" YouCompleteMe Settings
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " MISC
 set title                " set name of window to the filename
