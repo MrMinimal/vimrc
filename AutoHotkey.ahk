@@ -20,7 +20,7 @@ Capslock & u::Send {Blind}{Ctrl Down}{Left DownTemp}
 Capslock & u up::Send {Blind}{Ctrl Up}{Left Up}
 
 Capslock & o::Send {Blind}{Ctrl Down}{Right DownTemp}
-Capslock & o up::Send {Blind}{Ctrl Down}{Right Up}
+Capslock & o up::Send {Blind}{Ctrl Up}{Right Up}
 
 
 ; Capslock home/end movement 
