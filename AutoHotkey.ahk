@@ -52,9 +52,13 @@ Capslock & r::Send {Blind}{Shift Down}{Ctrl Down}{Right DownTemp}
 Capslock & r up::Send {Blind}{Shift Up}{Ctrl Up}{Right Up}
 
 
-; Make Capslock+Space -> Enter
-Capslock & Space::SendInput {Enter Down}
+; Make Capslock+Space -> Esc
+Capslock & Space::SendInput {Esc Down}
+Capslock & Space up::SendInput {Esc Up}
 
+Capslock & q::Send {Volume_Up Down}
+Capslock & a::Send {Volume_Down Down}
+Capslock & z::Send {Volume_Mute Down}
 
 ; Left hand home/end movement
 Capslock & g::SendInput {Blind}{Shift Down}{Home Down}
@@ -62,6 +66,9 @@ Capslock & g up::SendInput {Blind}{Shift Up}{Home Up}
 
 Capslock & v::SendInput {Blind}{Shift Down}{End Down}
 Capslock & v up::SendInput {Blind}{Shift Up}{End Up}
+
+; Backspace as delete
+Capslock & Backspace::SendInput {Del Down}
 
 
 ; Make Win Key + Capslock work like Capslock
