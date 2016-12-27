@@ -1,22 +1,8 @@
-" Tomsrvimrc
+" Tomsrvimrc - Windows without plugins
 
-" ========================= VUNDLE ========================= 
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'easymotion/vim-easymotion' 
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'Valloric/YouCompleteMe' 
-"Plugin 'vim-scripts/Conque-GDB'
-call vundle#end()            " required
 filetype plugin indent on    " required
-" ========================= VUNDLE END ========================= 
-
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py' 
-
 
 " MISC
 set title                " set name of window to the filename
@@ -25,14 +11,9 @@ set undolevels=1000      " use many muchos levels of undo
 
 " Enable syntax highlighting
 syntax on
-set background=dark
-colorscheme solarized
 
 " Spell checking
 set spell spelllang=en
-
-" Make vim not backwards compatible
-set nocompatible
 
 " Determine file type by extension
 filetype indent plugin on
@@ -54,10 +35,10 @@ set number
 set scrolloff=8
 
 " Tab settings
-set tabstop=4		" Visual number of spaces per tab
-set softtabstop=4	" Numbers inserted per tab
-set shiftwidth=4	" How much < and > shift
-set expandtab		" Convert tabs to spaces
+set tabstop=4" Visual number of spaces per tab
+set softtabstop=4" Numbers inserted per tab
+set shiftwidth=4" How much < and > shift
+set expandtab" Convert tabs to spaces
 set smarttab
 
 " KEYMAPPING
@@ -65,8 +46,6 @@ let mapleader = "\<Space>"
 
 nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>ve :e $MYVIMRC<CR>
-
-nnoremap <leader>: q:
 
 " Set < and > to multiples of shiftwidth
 set shiftround
@@ -90,7 +69,7 @@ set cursorline
 
 " Stop vim from using sound
 set noerrorbells
-set visualbell
+"set visualbell
 
 " Show visual help when using tab complete in command line
 set wildmode=longest,list,full                              " make wildmenu behave like the bash
@@ -104,5 +83,16 @@ set lazyredraw
 
 
 " Settings for easymotion
-map f <Plug>(easymotion-bd-w)
-map F <Plug>(easymotion-overwin-w)
+"map f <Plug>(easymotion-bd-w)
+"map F <Plug>(easymotion-overwin-w)
+
+" Make sure there is no GVIM UI
+:set guioptions-=m  "remove menu bar
+:set guioptions-=T  "remove toolbar
+:set guioptions-=r  "remove right-hand scroll bar
+:set guioptions-=L  "remove left-hand scroll bar
+
+" Colorscheme for windows
+colo zellner
+
+set guifont=Consolas:h11:b
