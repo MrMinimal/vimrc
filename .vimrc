@@ -1,4 +1,4 @@
-" Tomsrvimrc - Windows without plugins
+" Tomsrvimrc witho
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -51,7 +51,9 @@ nnoremap <leader>ve :e $MYVIMRC<CR>
 set shiftround
 
 " Show matching braces
+set mps+=<:>
 set showmatch
+set matchtime=1
 
 " Highlight search results
 set hlsearch
@@ -69,6 +71,7 @@ set cursorline
 
 " Stop vim from using sound
 set noerrorbells
+set vb t_vb=
 "set visualbell
 
 " Show visual help when using tab complete in command line
@@ -95,4 +98,7 @@ set lazyredraw
 " Colorscheme for windows
 colo zellner
 
-set guifont=Consolas:h11:b
+set guifont=Consolas:h11
+
+set background=dark
+colorscheme solarized
