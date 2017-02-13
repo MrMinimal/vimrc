@@ -1,5 +1,3 @@
-" Tomsrvimrc witho
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 filetype plugin indent on    " required
@@ -9,11 +7,25 @@ set title                " set name of window to the filename
 set history=1000         " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
 
+" Automatically update external changes to the file
+set autoread
+
 " Enable syntax highlighting
 syntax on
 
 " Spell checking
 set spell spelllang=en
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
 
 " Determine file type by extension
 filetype indent plugin on
@@ -58,6 +70,7 @@ set matchtime=1
 " Highlight search results
 set hlsearch
 set incsearch       " Highlight as you type
+set mat=2           " How many tenths of a second to blink when matching brackets
 
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
@@ -71,7 +84,6 @@ set cursorline
 
 " Stop vim from using sound
 set noerrorbells
-set vb t_vb=
 "set visualbell
 
 " Show visual help when using tab complete in command line
@@ -100,5 +112,11 @@ colo zellner
 
 set guifont=Consolas:h11
 
-set background=dark
-colorscheme solarized
+" set background=dark
+" colorscheme solarized
+
+au GUIEnter * simalt ~x
+
+
+" Edit a remote file with current instance of vim
+" e! scp://pi@192.168.0.21//home/pi/Dev/pzzioServer.py
