@@ -2,6 +2,11 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 filetype plugin indent on    " required
 
+" Omni complete
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone
+
 " MISC
 set title                " set name of window to the filename
 set history=1000         " remember more commands and search history
@@ -26,9 +31,6 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
-
-" Determine file type by extension
-filetype indent plugin on
 
 " Case insensitive search except when using capital letters
 set ignorecase
@@ -58,6 +60,10 @@ let mapleader = "\<Space>"
 
 nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>ve :e $MYVIMRC<CR>
+
+
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
 
 " Set < and > to multiples of shiftwidth
 set shiftround
@@ -112,8 +118,8 @@ colo zellner
 
 set guifont=Consolas:h11
 
-" set background=dark
-" colorscheme solarized
+"set background=dark
+"colorscheme solarized
 
 au GUIEnter * simalt ~x
 
