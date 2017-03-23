@@ -1,6 +1,6 @@
 " e! scp://pi@192.168.0.21//home/pi/Dev/pzzioServer.py                      // Edit a remote file with current instance of vim
 " :%s/old/new/gc                                                            // replace with prompt in current file
-" :arg *.cpp                                                                // Open all files with cpp ending
+" :arg *.cpp                                                                // pualsdkfj
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -115,6 +115,7 @@ set noerrorbells
 " Show visual help when using tab complete in command line
 set wildmode=longest,list,full                              " make wildmenu behave like the bash
 set wildmenu
+set wildignorecase
 
 " Show commands in the bottom right corner
 set showcmd
@@ -122,25 +123,20 @@ set showcmd
 " Prevent vim from redrawing too often 
 set lazyredraw
 
-
-" Settings for easymotion
-"map f <Plug>(easymotion-bd-w)
-"map F <Plug>(easymotion-overwin-w)
-
 " Make sure there is no GVIM UI
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
 :set guioptions-=r  "remove right-hand scroll bar
 :set guioptions-=L  "remove left-hand scroll bar
 
-" Colorscheme for windows
-colo zellner
-
-set guifont=Consolas:h11
+" Colorscheme for windows (if solarized is not installed)
+colorscheme zellner
 
 " needs to be installed
 set background=dark
 colorscheme solarized
+
+set guifont=Consolas:h11
 
 au GUIEnter * simalt ~x
 
@@ -159,3 +155,6 @@ set laststatus=2
 
 " Prevent word wrapping
 set tw=0
+
+" Add file path to recursive search
+set path=.,**
