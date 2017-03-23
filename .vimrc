@@ -1,3 +1,7 @@
+" e! scp://pi@192.168.0.21//home/pi/Dev/pzzioServer.py                      // Edit a remote file with current instance of vim
+" :%s/old/new/gc                                                            // replace with prompt in current file
+" :arg *.cpp                                                                // pualsdkfj
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 filetype plugin indent on    " required
@@ -18,6 +22,9 @@ set autoread
 " Enable syntax highlighting
 syntax on
 
+" Switch buffers without saving them first
+set hidden
+
 " Spell checking
 set spell spelllang=en
 
@@ -31,6 +38,9 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
+
+" Allow backspacing over autoindent, line breaks and start of insert action
+set backspace=indent,eol,start
 
 " Case insensitive search except when using capital letters
 set ignorecase
@@ -49,11 +59,15 @@ set number
 set scrolloff=8
 
 " Tab settings
-set tabstop=4" Visual number of spaces per tab
-set softtabstop=4" Numbers inserted per tab
-set shiftwidth=4" How much < and > shift
-set expandtab" Convert tabs to spaces
+set tabstop=4           " Visual number of spaces per tab
+set softtabstop=4       " Numbers inserted per tab
+set shiftwidth=4        " How much < and > shift
+set expandtab           " Convert tabs to spaces
 set smarttab
+
+" Fold everything deeper than two
+set foldmethod=syntax
+set foldlevelstart=2
 
 " KEYMAPPING
 let mapleader = "\<Space>"
@@ -61,9 +75,15 @@ let mapleader = "\<Space>"
 nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>ve :e $MYVIMRC<CR>
 
+nnoremap <Leader>e :Ex<CR>
 
+" Easier auto complete
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
+
+" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
+" which is the default
+map Y y$
 
 " Set < and > to multiples of shiftwidth
 set shiftround
@@ -118,11 +138,24 @@ colo zellner
 
 set guifont=Consolas:h11
 
-"set background=dark
-"colorscheme solarized
+" needs to be installed
+set background=dark
+colorscheme solarized
 
 au GUIEnter * simalt ~x
 
+" Tweaks for file browsing
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
 
-" Edit a remote file with current instance of vim
-" e! scp://pi@192.168.0.21//home/pi/Dev/pzzioServer.py
+" Open files on the right in e.g. :vsp
+set splitbelow
+set splitright
+
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+
+" Prevent word wrapping
+set tw=0
