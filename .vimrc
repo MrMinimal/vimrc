@@ -1,6 +1,6 @@
 " e! scp://pi@192.168.0.21//home/pi/Dev/pzzioServer.py                      // Edit a remote file with current instance of vim
 " :%s/old/new/gc                                                            // replace with prompt in current file
-" :arg *.cpp                                                                // pualsdkfj
+" :arg *.cpp                                                                // Open all files with cpp ending
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
