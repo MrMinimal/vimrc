@@ -1,33 +1,5 @@
 " Vim configuration without any plugins
 
-" ================================= NOTES =====================================
-" Edit a remote file with current instance of vim
-",e! scp://pi@192.168.0.21//home/pi/Dev/pzzioServer.py
-
-" replace with prompt in current file
-" :%s/old/new/gc
-
-" Open all files with .cpp extension
-" :arg *.cpp
-
-" Create html page of current file (with syntax highlight)
-" :TOhtml
-
-" Join lines
-" J
-
-" Indentation pasting
-" ]p
-
-" Replace tabs
-" retab
-
-" Replace all trailing whitespaces
-" :%s/\s\+$//e
-
-
-
-
 
 " ================================== GUI ======================================
 " Don't comply to old vi rules
@@ -232,3 +204,32 @@ set shiftround
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
+
+
+
+
+
+" ================================= NOTES =====================================
+" Edit a remote file with current instance of vim
+",e! scp://pi@192.168.0.21//home/pi/Dev/pzzioServer.py
+
+" replace with prompt in current file
+" :%s/old/new/gc
+
+" Open all files with .cpp extension
+" :arg *.cpp
+
+" Create html page of current file (with syntax highlight)
+" :TOhtml
+
+" Join lines
+" J
+
+" Indentation pasting
+" ]p
+
+" Replace tabs
+" retab
+
+" Replace all trailing whitespaces
+" :%s/\s\+$//e
