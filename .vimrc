@@ -145,7 +145,7 @@ set path=.,**
 
 
 
-" ================================== KEYS =====================================
+" ================================= MAPPING ===================================
 let mapleader = ","
 
 " Easier vimrc editing and reloading
@@ -154,10 +154,6 @@ nnoremap <leader>ve :e $MYVIMRC<CR>
 
 " Easier explorer access
 nnoremap <Leader>e :Ex<CR>
-
-" Easier auto complete
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-Space>
 
 " Easier command typing 
 nnoremap ; :
@@ -169,6 +165,17 @@ nnoremap H :bp<CR>
 " Folding
 nnoremap <space> za     " Fold current block
 vnoremap <space> zf     " Fold current selection
+
+" Easier auto complete
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
+
+" Make enter behave properly in completion
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Keep longest match highlighted
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 
 
