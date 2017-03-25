@@ -27,7 +27,7 @@ set number
 set relativenumber
 
 " Visual offset from screen edge
-set scrolloff=6
+set scrolloff=9999
 
 " Show matching braces
 set mps+=<:>
@@ -72,7 +72,7 @@ set guioptions-=r
 set guioptions-=L
 
 " Colorscheme for windows (if solarized is not installed)
-colorscheme zellner
+colorscheme evening
 
 " Hope a proper theme is installed
 "set background=dark
@@ -166,16 +166,18 @@ nnoremap H :bp<CR>
 nnoremap <space> za     " Fold current block
 vnoremap <space> zf     " Fold current selection
 
-" Easier auto complete
+" Omni completion mapping at Ctrl+Space
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
 
 " Make enter behave properly in completion
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Keep longest match highlighted
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+" Moving between splits
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-h> <c-w>h
+map <c-l> <c-w>l
 
 
 
@@ -240,3 +242,18 @@ map Y y$
 
 " Replace all trailing whitespaces
 " :%s/\s\+$//e
+"
+" Format selected
+" =
+"
+" Convert selected to uppercase/lowercase
+" uU
+"
+" Last insert location
+" gi
+"
+" Last visual selection
+" gv
+"
+" Same as :wq
+" ZZ
