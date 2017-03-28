@@ -1,4 +1,5 @@
 " Vim configuration without any plugins
+" Author: Tom Langwaldt
 
 
 " ================================== GUI ======================================
@@ -8,7 +9,7 @@ set nocompatible
 " Omni complete
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
-set completeopt=longest,menuone
+set completeopt=longest,menuone,preview
 
 " Display filename in window
 set title
@@ -27,7 +28,7 @@ set number
 set relativenumber
 
 " Visual offset from screen edge
-set scrolloff=9999
+set scrolloff=5
 
 " Show matching braces
 set mps+=<:>
@@ -62,7 +63,7 @@ set wildignorecase
 " Show commands in the bottom right corner
 set showcmd
 
-" Prevent vim from redrawing too often 
+" Prevent vim from redrawing too often
 set lazyredraw
 
 " Disable GVIM Gui
@@ -76,7 +77,7 @@ colorscheme evening
 
 " Hope a proper theme is installed
 "set background=dark
-"colorscheme solarized
+colorscheme solarized
 
 " Cross platform font
 set guifont=Consolas:h11
@@ -103,6 +104,20 @@ set colorcolumn=80
 " Show trailing spaces etc.
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set list
+
+" Indent Guides
+let g:indentguides_state = 0
+function! IndentGuides()
+    if g:indentguides_state
+        let g:indentguides_state = 0
+        2match None
+    else
+        let g:indentguides_state = 1
+        execute '2match IndentGuides /\%(\_^\s*\)\@<=\%(\%'.(0*&sw+1).'v\|\%'.(1*&sw+1).'v\|\%'.(2*&sw+1).'v\|\%'.(3*&sw+1).'v\|\%'.(4*&sw+1).'v\|\%'.(5*&sw+1).'v\|\%'.(6*&sw+1).'v\|\%'.(7*&sw+1).'v\)\s/'
+    endif
+endfunction
+hi def IndentGuides guibg=#303030
+nnoremap <leader>I :call IndentGuides()<cr>
 
 
 
@@ -141,11 +156,22 @@ set smartcase       " if any letter is a capital search case-sensitive
 " Recursive file auto complete
 set path=.,**
 
+" Use newer regexes
+nnoremap / /\v
+vnoremap / /\v
+
+" Keep matches in center of screen
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Not jump when using *
+nnoremap * *<c-o>
 
 
 
 
-" ================================= MAPPING ===================================
+
+" ================================= MAPPINGS ===================================
 let mapleader = ","
 
 " Easier vimrc editing and reloading
@@ -155,12 +181,16 @@ nnoremap <leader>ve :e $MYVIMRC<CR>
 " Easier explorer access
 nnoremap <Leader>e :Ex<CR>
 
-" Easier command typing 
+" Easier command typing
 nnoremap ; :
 
 " Easier buffer switching
-nnoremap L :bn<CR>
-nnoremap H :bp<CR>
+nnoremap H ^
+nnoremap L $
+
+" Easier buffer switching
+nnoremap J :bn<CR>
+nnoremap K :bp<CR>
 
 " Folding
 nnoremap <space> za     " Fold current block
@@ -178,6 +208,12 @@ map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-h> <c-w>h
 map <c-l> <c-w>l
+
+" Substitute
+nnoremap <leader>s :%s//<left>
+
+" Clean trailing whitespace
+nnoremap <leader>w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
 
 
@@ -213,6 +249,17 @@ set shiftround
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
+
+" Smoother drawing the screen
+set ttyfast
+
+
+
+
+
+" =============================== TRAINING ====================================
+" Use ; instead of :
+nnoremap : <nop>
 
 
 
