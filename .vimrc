@@ -142,7 +142,7 @@ set expandtab           " Convert tabs to spaces
 
 " =============================== FOLDING =====================================
 set foldmethod=indent
-set foldnestmax=2       " Show classes and methods
+set foldnestmax=99      " Show classes and methods
 
 
 
@@ -176,7 +176,7 @@ let mapleader = ","
 
 " Easier vimrc editing and reloading
 nnoremap <leader>vr :source $MYVIMRC<CR>
-nnoremap <leader>ve :e $MYVIMRC<CR>
+nnoremap <leader>ve :vsp $MYVIMRC<CR>
 
 " Easier explorer access
 nnoremap <Leader>e :Ex<CR>
@@ -212,8 +212,10 @@ map <c-l> <c-w>l
 " Substitute
 nnoremap <leader>s :%s//<left>
 
-" Clean trailing whitespace
-nnoremap <leader>w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+" Clean trailing whitespaces
+nnoremap <leader>W mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+" Highlight trailing whitespaces
+nnoremap <leader>w /\s\+$<cr>
 
 
 
