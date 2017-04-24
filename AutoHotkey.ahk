@@ -68,7 +68,8 @@ Capslock & v::SendInput {Blind}{Shift Down}{End Down}
 Capslock & v up::SendInput {Blind}{Shift Up}{End Up}
 
 ; Backspace as delete
-Capslock & Backspace::SendInput {Del Down}
+Capslock & Backspace::SendInput {Blind}{Del Down}
+Capslock & Backspace up::SendInput {Blind}{Del Up}
 
 
 ; Make Win Key + Capslock work like Capslock
