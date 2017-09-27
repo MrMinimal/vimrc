@@ -73,6 +73,9 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
+" Resize splits automatically
+autocmd VimResized * wincmd =
+
 " Colorscheme for windows (if solarized is not installed)
 colorscheme evening
 
@@ -156,6 +159,7 @@ set foldnestmax=99      " Show classes and methods
 
 " ================================ SEARCH =====================================
 " Case insensitive search except when using capital letters
+set infercase
 set ignorecase
 set smartcase       " if any letter is a capital search case-sensitive
 
@@ -211,10 +215,10 @@ inoremap <C-@> <C-Space>
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Moving between splits
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-h> <c-w>h
-map <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 " Substitute
 nnoremap <leader>s  :s//<left>
@@ -269,7 +273,30 @@ set ttyfast
 
 
 
+" ================================ MAKROS =====================================
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
 
+" Call to delete all empty buffers
+function! DeleteEmptyBuffers()
+    let [i, n; empty] = [1, bufnr('$')]
+    while i <= n
+        if bufexists(i) && bufname(i) == ''
+            call add(empty, i)
+        endif
+        let i += 1
+    endwhile
+    if len(empty) > 0
+        exe 'bdelete' join(empty)
+    endif
+endfunction
+com! ClearEmpty call DeleteEmptyBuffers()
 
 " =============================== TRAINING ====================================
 " Use ; instead of :
@@ -291,9 +318,6 @@ nnoremap : <nop>
 
 " Create html page of current file (with syntax highlight)
 " :TOhtml
-
-" Join lines
-" J
 
 " Indentation pasting
 " ]p
