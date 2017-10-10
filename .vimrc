@@ -19,7 +19,8 @@ set title
 syntax on
 
 " Enable spelling highlight
-set spell spelllang=en
+set spelllang=en
+set nospell
 
 " Disable wrapping of text
 set nowrap
@@ -78,6 +79,9 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
+" Resize splits automatically
+autocmd VimResized * wincmd =
+
 " Colorscheme for windows (if solarized is not installed)
 colorscheme evening
 
@@ -92,10 +96,15 @@ set guifont=Consolas:h11
 au GUIEnter * simalt ~x
 
 " Ex file browsing tweaks
-let g:netrw_banner=0        " disable banner
-let g:netrw_browse_split=4  " open new file in prior window
-let g:netrw_altv=1          " open splits to the right
-let g:netrw_liststyle=3     " tree view
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
 
 " Open files on the right in e.g. :vsp
 set splitbelow
@@ -140,8 +149,8 @@ set ffs=unix,dos,mac
 
 " Tab settings
 set tabstop=2           " Visual number of spaces per tab
-set softtabstop=2       " Numbers inserted per tab
 set shiftwidth=2        " How much < and > shift
+set softtabstop=2       " Numbers inserted per tab
 set expandtab           " Convert tabs to spaces
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
@@ -176,6 +185,7 @@ set foldnestmax=99      " Show classes and methods
 
 " ================================ SEARCH =====================================
 " Case insensitive search except when using capital letters
+set infercase
 set ignorecase
 set smartcase       " if any letter is a capital search case-sensitive
 
@@ -202,13 +212,14 @@ let mapleader = ","
 
 " Easier vimrc editing and reloading
 nnoremap <leader>vr :source $MYVIMRC<CR>
-nnoremap <leader>ve :vsp $MYVIMRC<CR>
+nnoremap <leader>ve :e $MYVIMRC<CR>
 
 " Easier explorer access
-nnoremap <Leader>e :Ex<CR>
+nnoremap <Leader>e :Vex<CR>
 
 " Easier command typing
-nnoremap ; :
+noremap ; :
+noremap q; q:
 
 " Easier buffer switching
 nnoremap H ^
@@ -219,8 +230,8 @@ nnoremap J :bn<CR>
 nnoremap K :bp<CR>
 
 " Folding
-nnoremap <space> za     " Fold current block
-vnoremap <space> zf     " Fold current selection
+nnoremap <space> za
+vnoremap <space> zf
 
 " Omni completion mapping at Ctrl+Space
 inoremap <C-Space> <C-x><C-o>
@@ -230,18 +241,23 @@ inoremap <C-@> <C-Space>
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Moving between splits
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-h> <c-w>h
-map <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 " Substitute
-nnoremap <leader>s :%s//<left>
+nnoremap <leader>s  :s//<left>
+nnoremap <leader>S  :%s//<left>
+nnoremap <leader>sv :'<,'>s//<left>
 
 " Clean trailing whitespaces
 nnoremap <leader>W mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 " Highlight trailing whitespaces
 nnoremap <leader>w /\s\+$<cr>
+
+" Spell toggle
+"nnoremap <leader>S :set spell! spelllang=en<cr>
 
 
 
@@ -283,7 +299,30 @@ set ttyfast
 
 
 
+" ================================ MAKROS =====================================
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
 
+" Call to delete all empty buffers
+function! DeleteEmptyBuffers()
+    let [i, n; empty] = [1, bufnr('$')]
+    while i <= n
+        if bufexists(i) && bufname(i) == ''
+            call add(empty, i)
+        endif
+        let i += 1
+    endwhile
+    if len(empty) > 0
+        exe 'bdelete' join(empty)
+    endif
+endfunction
+com! ClearEmpty call DeleteEmptyBuffers()
 
 " =============================== TRAINING ====================================
 " Use ; instead of :
@@ -306,14 +345,11 @@ nnoremap : <nop>
 " Create html page of current file (with syntax highlight)
 " :TOhtml
 
-" Join lines
-" J
-
 " Indentation pasting
 " ]p
 
 " Replace tabs
-" retab
+" retab!
 
 " Replace all trailing whitespaces
 " :%s/\s\+$//e
@@ -322,7 +358,7 @@ nnoremap : <nop>
 " =
 "
 " Convert selected to uppercase/lowercase
-" uU
+" gu gU
 "
 " Last insert location
 " gi
@@ -330,5 +366,15 @@ nnoremap : <nop>
 " Last visual selection
 " gv
 "
-" Same as :wq
-" ZZ
+" Fix spelling
+" z=
+"
+" Next spell mistake
+" [z
+"
+" ================================= TODOS =====================================
+" Change indentation from 2 spaces to 4 spaces
+" set ts=2 sts=2 noet
+" retab!
+" set ts=4 sts=4 et
+" retab
