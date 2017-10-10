@@ -10,6 +10,7 @@ set nocompatible
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 set completeopt=longest,menuone,preview
+set complete=.,w,b,u,t
 
 " Display filename in window
 set title
@@ -28,7 +29,7 @@ set number
 set relativenumber
 
 " Visual offset from screen edge
-set scrolloff=5
+set scrolloff=1000
 
 " Show matching braces
 set mps+=<:>
@@ -60,6 +61,11 @@ set wildmode=longest,list,full
 set wildmenu
 set wildignorecase
 
+" Ignore certain files in completion
+set wildignore+=.hg,.git,.svn
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest
+
 " Show commands in the bottom right corner
 set showcmd
 
@@ -76,7 +82,7 @@ set guioptions-=L
 colorscheme evening
 
 " Hope a proper theme is installed
-"set background=dark
+set background=dark
 colorscheme solarized
 
 " Cross platform font
@@ -102,8 +108,10 @@ set laststatus=2
 set colorcolumn=80
 
 " Show trailing spaces etc.
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set listchars=tab:>-,trail:~,extends:>,precedes:<
 set list
+
+set smarttab
 
 " Indent Guides
 let g:indentguides_state = 0
@@ -131,10 +139,28 @@ set encoding=utf8
 set ffs=unix,dos,mac
 
 " Tab settings
-set tabstop=4           " Visual number of spaces per tab
-set softtabstop=4       " Numbers inserted per tab
-set shiftwidth=4        " How much < and > shift
+set tabstop=2           " Visual number of spaces per tab
+set softtabstop=2       " Numbers inserted per tab
+set shiftwidth=2        " How much < and > shift
 set expandtab           " Convert tabs to spaces
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
+
+" Settings based on filetype
+au BufNewFile,BufRead *.vim setlocal noet ts=4 sw=4 sts=4
+au BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
+au BufNewFile,BufRead *.md setlocal spell noet ts=4 sw=4
+au BufNewFile,BufRead *.yml,*.yaml setlocal expandtab ts=2 sw=2
+au BufNewFile,BufRead *.cpp setlocal expandtab ts=2 sw=2
+au BufNewFile,BufRead *.hpp setlocal expandtab ts=2 sw=2
+au BufNewFile,BufRead *.json setlocal expandtab ts=2 sw=2
+au BufNewFile,BufRead *.jade setlocal expandtab ts=2 sw=2
+
+
+
+
 
 
 
