@@ -241,8 +241,8 @@ nnoremap H ^
 nnoremap L $
 
 " Easier buffer switching
-nnoremap J :bn<CR>
-nnoremap K :bp<CR>
+nnoremap N :bn<CR>
+nnoremap P :bp<CR>
 
 " Folding
 nnoremap <space> za
