@@ -48,3 +48,9 @@ $ git diff --staged
 
 # Show fancy diff when commiting
 git commit --verbose
+
+# Show if repo uses https or ssh
+git remote show origin
+
+# Fix remote URL
+git remote set-url origin git+ssh://git@github.com/username/reponame.git
