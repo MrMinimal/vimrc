@@ -42,3 +42,6 @@ git reset HEAD~
 
 # Undo all local commits, DELETE changes in files
 git reset HEAD~
+
+# Show diff of staged files as well
+$ git diff --staged
