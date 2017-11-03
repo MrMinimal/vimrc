@@ -1,0 +1,33 @@
+=============================== Misc ==========================================
+# Run command detached (keeps running outside ssh session)
+nohup /path/to/program &
+
+
+================================ Files ========================================
+# Unpack zip in new folder
+unzip filename.zip -d customFolderName
+
+# Unpack tar in new folder
+tar -xzvf filename.tar.gz -C customFolderName
+
+
+=============================== Network =======================================
+# Show all open ports
+netstat -vatn
+
+
+=============================== Docker ========================================
+# Show all images
+sudo docker images
+
+# Remove an image
+sudo docker rmi <imageHash>
+
+# Remove a container
+sudo docker rm <containerHash>
+
+# Stop a container gracefully
+sudo docker stop <containerHash>
+
+# Attach bash to container
+sudo docker exec -it <containerHash> bin/bash
