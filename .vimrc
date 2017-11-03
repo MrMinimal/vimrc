@@ -1,5 +1,4 @@
-" Vim configuration without any plugins
-" Author: Tom Langwaldt
+" Vim configuration without any plugins " Author: Tom Langwaldt
 
 " =============================== PLUGINS =====================================
 set nocompatible              " be iMproved, required
@@ -347,46 +346,6 @@ nnoremap : <nop>
 
 
 
-" ================================= NOTES =====================================
-" Edit a remote file with current instance of vim
-",e! scp://pi@192.168.0.21//home/pi/Dev/pzzioServer.py
-
-" replace with prompt in current file
-" :%s/old/new/gc
-
-" Open all files with .cpp extension
-" :arg *.cpp
-
-" Create html page of current file (with syntax highlight)
-" :TOhtml
-
-" Indentation pasting
-" ]p
-
-" Replace tabs
-" retab!
-
-" Replace all trailing whitespaces
-" :%s/\s\+$//e
-"
-" Format selected
-" =
-"
-" Convert selected to uppercase/lowercase
-" gu gU
-"
-" Last insert location
-" gi
-"
-" Last visual selection
-" gv
-"
-" Fix spelling
-" z=
-"
-" Next spell mistake
-" [z
-"
 " ================================= TODOS =====================================
 " Change indentation from 2 spaces to 4 spaces
 " set ts=2 sts=2 noet
