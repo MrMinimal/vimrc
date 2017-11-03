@@ -35,6 +35,9 @@ find / -mtime +1
 # Find files which have been modified before yesterday
 find / -mtime -1
 
+# Find files with at least these permissions
+find / -perm -644
+
 
 =============================== Network =======================================
 # Show all open ports
@@ -87,6 +90,9 @@ e! scp://pi@192.168.0.21//home/pi/Dev/pzzioServer.py
 
 # Open all files with .cpp extension
 :arg *.cpp
+
+# Replace in all open buffers
+:bufdo %s/pattern/replace/ge | update
 
 # Create html page of current file (with syntax highlight)
 :TOhtml
