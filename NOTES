@@ -34,3 +34,11 @@ sudo docker stop <containerHash>
 
 # Attach bash to container
 sudo docker exec -it <containerHash> bin/bash
+
+
+================================ Git ==========================================
+# Undo all local commits, keep files edited
+git reset HEAD~
+
+# Undo all local commits, DELETE changes in files
+git reset HEAD~
