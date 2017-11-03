@@ -13,6 +13,28 @@ tar -xzvf filename.tar.gz -C customFolderName
 # Create links
 ln
 
+================================ Search =======================================
+# Find file by name (case sensitive)
+find -name "query"
+
+# Find file by name (case insensitive)
+find -iname "query"
+
+# Find files/directories (f for file, d for directory, l for link)
+find -type type_descriptor query
+
+# Find files with ending
+find / -type f -name "*.conf"
+
+# Find files bigger than
+find / -size +700M
+
+# Find files which have been modified after yesterday
+find / -mtime +1
+
+# Find files which have been modified before yesterday
+find / -mtime -1
+
 
 =============================== Network =======================================
 # Show all open ports
