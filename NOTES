@@ -76,3 +76,44 @@ git remote show origin
 
 # Fix remote URL
 git remote set-url origin git+ssh://git@github.com/username/reponame.git
+
+
+================================ Vim ==========================================
+# Edit a remote file with current instance of vim
+e! scp://pi@192.168.0.21//home/pi/Dev/pzzioServer.py
+
+# replace with prompt in current file
+:%s/old/new/gc
+
+# Open all files with .cpp extension
+:arg *.cpp
+
+# Create html page of current file (with syntax highlight)
+:TOhtml
+
+# Indentation pasting
+]p
+
+# Replace tabs
+retab!
+
+# Replace all trailing whitespaces
+:%s/\s\+$//e
+
+# Format selected
+=
+
+# Convert selected to uppercase/lowercase
+gu gU
+
+# Last insert location
+gi
+
+# Last visual selection
+gv
+
+# Fix spelling
+z=
+
+# Next spell mistake
+[z
