@@ -10,6 +10,9 @@ unzip filename.zip -d customFolderName
 # Unpack tar in new folder
 tar -xzvf filename.tar.gz -C customFolderName
 
+# Create links
+ln
+
 
 =============================== Network =======================================
 # Show all open ports
