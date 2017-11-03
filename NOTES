@@ -45,3 +45,6 @@ git reset HEAD~
 
 # Show diff of staged files as well
 $ git diff --staged
+
+# Show fancy diff when commiting
+git commit --verbose
