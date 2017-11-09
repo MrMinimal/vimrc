@@ -122,6 +122,8 @@ fi
 
 set -o vi
 
+export HISTSIZE="INFINITE"
+
 # Add powerline-bash support
 function _update_ps1() {
     PS1="$(powerline-shell $?)"
