@@ -7,6 +7,9 @@ nohup /path/to/program &
 # List all connected devices, drives, usbs
 lsblk
 
+# Show drive fill state
+df
+
 
 ================================ Files ========================================
 # Unpack zip in new folder
