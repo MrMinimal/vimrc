@@ -3,6 +3,11 @@
 nohup /path/to/program &
 
 
+============================== Hardware =======================================
+# List all connected devices, drives, usbs
+lsblk
+
+
 ================================ Files ========================================
 # Unpack zip in new folder
 unzip filename.zip -d customFolderName
