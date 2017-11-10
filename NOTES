@@ -18,6 +18,10 @@ tar -xzvf filename.tar.gz -C customFolderName
 # Create links
 ln
 
+# Create (compressed) backup via ssh
+ssh root@raspberrypi dd if=/dev/mmcblk0 | gzip -c > img.gz
+
+
 ================================ Search =======================================
 # Find file by name (case sensitive)
 find -name "query"
