@@ -43,6 +43,13 @@ find / -perm -644
 # Show all open ports
 netstat -vatn
 
+# Show all ips in network
+nmap -sn 192.168.0.0/24
+
+# Show all ips in network (without nmap)
+ping <broadcastIP>  # maybe with -b
+arp -a
+
 
 =============================== Docker ========================================
 # Show all images
