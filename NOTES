@@ -62,6 +62,12 @@ nmap -sn 192.168.0.0/24
 ping <broadcastIP>  # maybe with -b
 arp -a
 
+# Get IP of device to device connection (direct ethernet)
+# Connect two devices directly via LAN
+# Needs dnsmasq-base to be installed and
+# ipv4 set to "shared to other computers"
+cat /var/lib/misc/dnsmasq.leases
+
 
 =============================== Docker ========================================
 # Show all images
