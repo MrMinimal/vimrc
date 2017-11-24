@@ -124,7 +124,12 @@ set -o vi
 
 export HISTSIZE="INFINITE"
 
-# Add powerline-bash support
+shopt -s histappend
+HISTFILESIZE=1000000
+HISTSIZE=1000000
+HISTCONTROL=ignoreboth
+PROMPT_COMMAND='history -a'
+
 function _update_ps1() {
     PS1="$(powerline-shell $?)"
 }
@@ -132,9 +137,3 @@ function _update_ps1() {
 if [ "$TERM" != "linux" ]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
-
-shopt -s histappend
-HISTFILESIZE=1000000
-HISTSIZE=1000000
-HISTCONTROL=ignoreboth
-PROMPT_COMMAND='history -a'
