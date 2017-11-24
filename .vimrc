@@ -105,7 +105,7 @@ colorscheme evening
 
 " Hope a proper theme is installed
 set background=dark
-colorscheme solarized
+colorscheme flattened_dark
 
 " Cross platform font
 set guifont=Consolas:h11
