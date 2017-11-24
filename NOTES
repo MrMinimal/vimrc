@@ -148,3 +148,7 @@ z=
 
 # Next spell mistake
 [z
+
+=============================== Gnome =========================================
+# Open the terminal in fullscreen mode
+gsettings set org.gnome.desktop.default-applications.terminal exec 'terminal'
