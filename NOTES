@@ -71,6 +71,13 @@ arp -a
 # ipv4 set to "shared to other computers"
 cat /var/lib/misc/dnsmasq.leases
 
+# Setup WLAN
+sudo iwlist wlan0 scan                              # List all networks
+vim /etc/wpa_supplicant/wpa_supplicant.conf
+# Add this output to wpa_passphrase.conf:
+wpa_passphrase "testing" "testingPassword"
+wpa_cli -i wlan0 reconfigure                        # restart the wlan
+
 
 =============================== Docker ========================================
 # Show all images
