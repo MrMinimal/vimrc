@@ -13,6 +13,10 @@ df
 # Write image to USB
 dd bs=4M if=2017-09-07-raspbian-stretch.img of=/dev/sdX conv=fsync status=progress
 
+# Mount .img file
+fdisk /path/file.img -l     # Blocksize * startOffset of partition to mount
+mount -o loop,offset=<calcSolution> /path/file.img /mnt/tmp
+
 
 ================================ Files ========================================
 # Unpack zip in new folder
