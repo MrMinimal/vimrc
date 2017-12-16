@@ -121,6 +121,7 @@ fi
 # ============================================================================
 
 set -o vi
+alias open=xdg-open
 
 export HISTSIZE="INFINITE"
 

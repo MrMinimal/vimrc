@@ -11,6 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'rust-lang/rust.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -162,9 +163,9 @@ set encoding=utf8
 set ffs=unix,dos,mac
 
 " Tab settings
-set tabstop=2           " Visual number of spaces per tab
-set shiftwidth=2        " How much < and > shift
-set softtabstop=2       " Numbers inserted per tab
+set tabstop=4           " Visual number of spaces per tab
+set shiftwidth=4        " How much < and > shift
+set softtabstop=4       " Numbers inserted per tab
 set expandtab           " Convert tabs to spaces
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
