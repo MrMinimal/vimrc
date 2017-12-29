@@ -12,6 +12,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'rust-lang/rust.vim'
+Plugin 'godlygeek/tabular'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -236,7 +237,7 @@ nnoremap <Leader>e :Vex<CR>
 noremap ; :
 noremap q; q:
 
-" Easier buffer switching
+" Easier line navigation
 nnoremap H ^
 nnoremap L $
 
